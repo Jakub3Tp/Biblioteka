@@ -1,3 +1,3 @@
 public enum Gatunek {
-    Horror, Kryminal, Fantasy, Satyra, Biografia
+    Horror, Kryminal, Fantasy, Satyra, Biografia;
 }

@@ -15,24 +15,29 @@ public class Biblioteka {
     }
 
     public ArrayList<Ksiazka> znajdzKsiazkiAutora(Autor autor){
-        for (Ksiazka k: ksiazki){
-           if (autor.equals(Egzemplarz.Stan.Wolny)){
-
-           }
+        ArrayList<Ksiazka> KsiazkiAutora = new ArrayList<>();
+        for (Ksiazka k : ksiazki) {
+            if (k.getAutor().equals(autor)) {
+                KsiazkiAutora.add(k);
+            }
         }
-        return null;
+        return KsiazkiAutora;
     }
 
     public ArrayList<Ksiazka> znajdzKsiazkiPoGatunku(Gatunek gatunek){
-        for (Ksiazka k: ksiazki){
-
+        ArrayList<Ksiazka> ksiazkaPoGatunku = new ArrayList<>();
+        for (Ksiazka k : ksiazki) {
+            if (k.getGatunek().equals(gatunek)) {
+                ksiazkaPoGatunku.add(k);
+            }
         }
-        return null;
+        return ksiazkaPoGatunku;
+
     }
     public Egzemplarz znajdzEgzemplarzKsiazki(Ksiazka ksiazka){
-        for (Egzemplarz e: egzemplarze){
-            if(Egzemplarz.Stan.Wolny){
-
+        for (Egzemplarz e : egzemplarze) {
+            if (e.getKsiazka().equals(ksiazka) && e.getStan() == Egzemplarz.Stan.Wolny) {
+                return e;
             }
         }
         return null;
