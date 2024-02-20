@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Ksiazka {
     private String tytul;
     private Autor autor;
@@ -30,5 +32,18 @@ public class Ksiazka {
     @Override
     public String toString(){
         return String.format("%s; %s; %d", autor.toString(), tytul, rokWydania);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ksiazka ksiazka = (Ksiazka) o;
+        return rokWydania == ksiazka.rokWydania && Objects.equals(tytul, ksiazka.tytul) && Objects.equals(autor, ksiazka.autor) && gatunek == ksiazka.gatunek;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tytul, autor, gatunek, rokWydania);
     }
 }
