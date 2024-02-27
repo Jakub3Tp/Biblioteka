@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -34,15 +35,28 @@ public class Main {
                     Egzemplarz.setStan(Egzemplarz.Stan.Wypozyczony);
                     break;
                 case 3:
-                    System.out.println("Podaj książke którą chcesz oddać");
-                    Ksiazka k = biblioteka.znajdzKsiazke(tytul);
-                    if (k.equals(Egzemplarz.Stan.Wypozyczony)){
-                        Wypozyczenie oddac = new Wypozyczenie(wypozyczenie);
-
+                    System.out.println("Podaj Tytul");
+                    tytul = scanner.nextLine();
+                    k = biblioteka.znajdzKsiazke(tytul);
+                    if (k == null)
+                        break;
+                    egzemplarz = biblioteka.znajdzWypozyczonyEgzemplarzKsiazki(k);
+                    if (egzemplarz == null){
+                        break;
                     }
-                    break;
+                    wypozyczenie = biblioteka.znajdzWyporzyczenie(egzemplarz);
+                    if (wypozyczenie == null){
+                        break;
+                    }
+                    double kara = wypozyczenie.oddaj();
+                    System.out.println("Oddano książke, kara to"+ kara);
+
                 case 4:
-                    biblioteka.znajdzKsiazkiAutora();
+                    Autor autor = biblioteka.dodajAutora();
+                    ArrayList<Ksiazka> ksiazki = biblioteka.znajdzKsiazkiAutora(autor);
+                    for (Ksiazka ksiazka: ksiazki){
+                        System.out.println(ksiazka);
+                    }
                     break;
                 case 5:
                     return;

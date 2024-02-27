@@ -51,6 +51,7 @@ public class Biblioteka {
                 return k;
             }
         }
+    }
 
         public ArrayList<Ksiazka> znajdzKsiazkiAutora (Autor autor){
             ArrayList<Ksiazka> wynik = new ArrayList<>();
@@ -60,7 +61,7 @@ public class Biblioteka {
                 }
                 return null;
             }
-
+    }
             public ArrayList<Ksiazka> znajdzKsiazkiPoGatunku (Gatunek gatunek){
                 ArrayList<Ksiazka> wynik = new ArrayList<>();
                 for (Ksiazka k : ksiazki) {
@@ -69,15 +70,30 @@ public class Biblioteka {
                     }
                     return null;
                 }
+            }
                 public Egzemplarz znajdzEgzemplarzKsiazki (Ksiazka ksiazka){
                     for (Egzemplarz e : egzemplarze) {
                         if (e.getKsiazka().equals(ksiazki) && e.getStan() == Egzemplarz.Stan.Wolny) {
-                            return e;
+                            return e.getKsiazka();
                         }
                         return null;
                     }
                 }
+            public Egzemplarz znajdzWypozyczonyEgzemplarzKsiazki(Ksiazka ksiazka){
+                for (Egzemplarz w : egzemplarze){
+                    if (w.getKsiazka().equals((ksiazki) && w.getStan() == Egzemplarz.Stan.Wypozyczony)) {
+                        return w.getKsiazka();
+                    }
+                }
+                return null;
             }
+        public Wypozyczenie znajdzWyporzyczenie(Egzemplarz egzemplarz){
+            for (Wypozyczenie w: wypozyczenia){
+                if (w.getDataOddania() == null && w.getEgzemplarz().equals(egzemplarz)){
+                    return w;
+                }
+            }
+            return null;
         }
-    }
+
 }

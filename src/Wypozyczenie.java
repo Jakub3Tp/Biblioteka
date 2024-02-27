@@ -28,4 +28,12 @@ public class Wypozyczenie {
         }
         return 0;
     }
+
+    public Egzemplarz getEgzemplarz() {
+        return egzemplarz;
+    }
+
+    public LocalDate getDataOddania() {
+        return dataOddania;
+    }
 }
